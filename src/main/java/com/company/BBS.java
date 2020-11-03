@@ -6,19 +6,15 @@ import java.util.Random;
 
 public class BBS {
     //Długość generowanego ciągu
-    private int keyLenght;
-    private BigInteger p;
-    private BigInteger q;
+    private final int keyLenght;
     protected BigInteger N;
 
     public BBS(int keyLenght, BigInteger p, BigInteger q) {
         this.keyLenght = keyLenght;
-        this.p = p;
-        this.q = q;
         this.N = p.multiply(q);
     }
 
-    public BitSet generateBitset(){
+    public BitSet generateBitset() {
         BitSet bitSet = new BitSet(keyLenght);
 
         BigInteger x = generateGCDNumber(500000000, 1000000000);
@@ -36,7 +32,7 @@ public class BBS {
         return bitSet;
     }
 
-    protected BigInteger generateBigIntRandomNumber(int minimalLimit, int maximalLimit){
+    protected BigInteger generateBigIntRandomNumber(int minimalLimit, int maximalLimit) {
         BigInteger maxLimit = BigInteger.valueOf(maximalLimit);
         BigInteger minLimit = BigInteger.valueOf(minimalLimit);
         BigInteger range = maxLimit.subtract(minLimit);
@@ -50,11 +46,11 @@ public class BBS {
         return res;
     }
 
-    protected BigInteger generateGCDNumber(int minimalLimit, int maximalLimit){
+    protected BigInteger generateGCDNumber(int minimalLimit, int maximalLimit) {
         BigInteger gcdNum;
         do {
-            gcdNum = generateBigIntRandomNumber(minimalLimit,maximalLimit);
-        } while(!(gcdNum.gcd(N).equals(BigInteger.ONE)));
+            gcdNum = generateBigIntRandomNumber(minimalLimit, maximalLimit);
+        } while (!(gcdNum.gcd(N).equals(BigInteger.ONE)));
         return gcdNum;
     }
 }

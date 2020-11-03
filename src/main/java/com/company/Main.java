@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
         BigInteger p = new BigInteger("3000000019");
         BigInteger q = new BigInteger("3000000019");
-        BBS bbs = new BBS(20000, p,q);
+        BBS bbs = new BBS(20000, p, q);
         BitSet bitSet = bbs.generateBitset();
 
         //Wyświetlenie
